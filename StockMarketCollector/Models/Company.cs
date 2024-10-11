@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StockMarketData.Models;
+namespace StockMarketCollector.Models;
 
 [Table("Companies")]
 public class Company

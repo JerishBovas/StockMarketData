@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StockMarketData.Data;
+using StockMarketCollector.Data;
 
 #nullable disable
 
-namespace StockMarketData.Migrations
+namespace StockMarketCollector.Migrations
 {
     [DbContext(typeof(StockMarketContext))]
-    [Migration("20241006233922_InitialCreate")]
-    partial class InitialCreate
+    partial class StockMarketContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,7 +22,7 @@ namespace StockMarketData.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("StockMarketData.Models.Company", b =>
+            modelBuilder.Entity("StockMarketCollector.Models.Company", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -122,7 +119,7 @@ namespace StockMarketData.Migrations
                     b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("StockMarketData.Models.Quote", b =>
+            modelBuilder.Entity("StockMarketCollector.Models.Quote", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -198,7 +195,7 @@ namespace StockMarketData.Migrations
                     b.ToTable("Quotes");
                 });
 
-            modelBuilder.Entity("StockMarketData.Models.RealTimePrice", b =>
+            modelBuilder.Entity("StockMarketCollector.Models.RealTimePrice", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -247,7 +244,7 @@ namespace StockMarketData.Migrations
                     b.ToTable("RealTimePrices");
                 });
 
-            modelBuilder.Entity("StockMarketData.Models.Stock", b =>
+            modelBuilder.Entity("StockMarketCollector.Models.Stock", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -299,7 +296,7 @@ namespace StockMarketData.Migrations
                     b.ToTable("Stocks");
                 });
 
-            modelBuilder.Entity("StockMarketData.Models.StockExchange", b =>
+            modelBuilder.Entity("StockMarketCollector.Models.StockExchange", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -329,42 +326,42 @@ namespace StockMarketData.Migrations
                     b.ToTable("StockExchanges");
                 });
 
-            modelBuilder.Entity("StockMarketData.Models.Company", b =>
+            modelBuilder.Entity("StockMarketCollector.Models.Company", b =>
                 {
-                    b.HasOne("StockMarketData.Models.Stock", "Stock")
+                    b.HasOne("StockMarketCollector.Models.Stock", "Stock")
                         .WithOne("Company")
-                        .HasForeignKey("StockMarketData.Models.Company", "StockId")
+                        .HasForeignKey("StockMarketCollector.Models.Company", "StockId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Stock");
                 });
 
-            modelBuilder.Entity("StockMarketData.Models.Quote", b =>
+            modelBuilder.Entity("StockMarketCollector.Models.Quote", b =>
                 {
-                    b.HasOne("StockMarketData.Models.Stock", "Stock")
+                    b.HasOne("StockMarketCollector.Models.Stock", "Stock")
                         .WithOne("Quote")
-                        .HasForeignKey("StockMarketData.Models.Quote", "StockId")
+                        .HasForeignKey("StockMarketCollector.Models.Quote", "StockId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Stock");
                 });
 
-            modelBuilder.Entity("StockMarketData.Models.RealTimePrice", b =>
+            modelBuilder.Entity("StockMarketCollector.Models.RealTimePrice", b =>
                 {
-                    b.HasOne("StockMarketData.Models.Stock", "Stock")
+                    b.HasOne("StockMarketCollector.Models.Stock", "Stock")
                         .WithOne("RealTimePrice")
-                        .HasForeignKey("StockMarketData.Models.RealTimePrice", "StockId")
+                        .HasForeignKey("StockMarketCollector.Models.RealTimePrice", "StockId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Stock");
                 });
 
-            modelBuilder.Entity("StockMarketData.Models.Stock", b =>
+            modelBuilder.Entity("StockMarketCollector.Models.Stock", b =>
                 {
-                    b.HasOne("StockMarketData.Models.StockExchange", "StockExchange")
+                    b.HasOne("StockMarketCollector.Models.StockExchange", "StockExchange")
                         .WithMany("Stocks")
                         .HasForeignKey("StockExchangeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -373,7 +370,7 @@ namespace StockMarketData.Migrations
                     b.Navigation("StockExchange");
                 });
 
-            modelBuilder.Entity("StockMarketData.Models.Stock", b =>
+            modelBuilder.Entity("StockMarketCollector.Models.Stock", b =>
                 {
                     b.Navigation("Company");
 
@@ -382,7 +379,7 @@ namespace StockMarketData.Migrations
                     b.Navigation("RealTimePrice");
                 });
 
-            modelBuilder.Entity("StockMarketData.Models.StockExchange", b =>
+            modelBuilder.Entity("StockMarketCollector.Models.StockExchange", b =>
                 {
                     b.Navigation("Stocks");
                 });

@@ -98,8 +98,8 @@ StockMarketData is crafted to aggregate and manage financial information from th
 
 ## License
 
-    This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-    
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
 ## Key Points
 
 - **Restore Dependencies**: Use the `dotnet restore` command to download and install all necessary dependencies according to the project's configuration.

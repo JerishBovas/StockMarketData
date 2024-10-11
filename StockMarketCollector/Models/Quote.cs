@@ -1,4 +1,4 @@
-namespace StockMarketData.Models;
+namespace StockMarketCollector.Models;
 
 public class Quote
 {

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace StockMarketData.Models;
+namespace StockMarketCollector.Models;
 
 public class Stock
 {

@@ -1,19 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StockMarketData.Models;
+using StockMarketCollector.Models;
 
-namespace StockMarketData.Data
+namespace StockMarketCollector.Data
 {
-    public class StockMarketContext : DbContext
+    public class StockMarketContext(DbContextOptions options) : DbContext(options)
     {
-        public DbSet<Stock> Stocks { get; set; }
-        public DbSet<Company> Companies { get; set; }
-        public DbSet<StockExchange> StockExchanges { get; set; }
-        public DbSet<Quote> Quotes { get; set; }
-        public DbSet<RealTimePrice> RealTimePrices { get; set;}
-
-        public StockMarketContext(DbContextOptions options) : base(options)
-        {
-        }
+        public DbSet<Stock> Stocks { get; init; }
+        public DbSet<Company> Companies { get; init; }
+        public DbSet<StockExchange> StockExchanges { get; init; }
+        public DbSet<Quote> Quotes { get; init; }
+        public DbSet<RealTimePrice> RealTimePrices { get; init;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

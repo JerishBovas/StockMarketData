@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace StockMarketData.Data;
+namespace StockMarketCollector.Data;
 
 public class StockMarketContextDesignFactory : IDesignTimeDbContextFactory<StockMarketContext>
 {
