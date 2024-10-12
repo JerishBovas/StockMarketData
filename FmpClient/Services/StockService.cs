@@ -1,9 +1,9 @@
-using FinancialModelingPrepClient.IServices;
 using Microsoft.Extensions.Logging;
 using RestSharp;
-using FinancialModelingPrepClient.Models;
+using FmpClient.IServices;
+using FmpClient.Models;
 
-namespace FinancialModelingPrepClient.Services;
+namespace FmpClient.Services;
 
 public class StockService(ILogger<StockService> logger, IRestClient restClient) : IStockService
 {

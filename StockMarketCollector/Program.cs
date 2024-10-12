@@ -1,5 +1,5 @@
-﻿using FinancialModelingPrepClient;
-using FinancialModelingPrepClient.IServices;
+﻿using FmpClient;
+using FmpClient.IServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,11 +26,12 @@ namespace StockMarketCollector
         {
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddUserSecrets<Program>()
                 .Build();
             
-            // Add FinancialModelingPrepClient
-            services.AddFinancialModelingPrepClient(configuration.GetSection("FMP_key").Value!, configuration.GetSection("FMP_Url").Value!);
+            // Add FmpClient
+            services.AddFmpClient(configuration.GetSection("FMP_key").Value!, configuration.GetSection("FMP_Url").Value!);
                 
             // Add application services
             services.AddTransient<App>();
@@ -59,29 +60,25 @@ namespace StockMarketCollector
             logger.LogInformation("Reached here");
             
             var newStocks = new List<Stock>();
-            if(stocks is not null)
+            
+            foreach (var stock in stocks)
             {
-                foreach (var stock in stocks)
+                if (stock.Name is null)
                 {
-                    if (stock.Name is null || stock.Symbol is null)
-                    {
-                        logger.LogInformation("Name: " + stock.Name);
-                        logger.LogInformation("Symbol: "+stock.Symbol);
-                        logger.LogInformation("Exchange: "+stock.Exchange);
-                        continue;
-                    }
-                    newStocks.Add(new Stock()
-                    {
-                        Symbol = stock.Symbol,
-                        Name = stock.Name,
-                        Price = stock.Price ?? 0,
-                        StockExchange = new StockExchange()
-                        {
-                            Name = stock.Exchange ?? "",
-                            ShortName = stock.ExchangeShortName ?? "",
-                        }
-                    });
+                    logger.LogInformation($"Name: {stock.Symbol}", stock);
+                    continue;
                 }
+                newStocks.Add(new Stock()
+                {
+                    Symbol = stock.Symbol,
+                    Name = stock.Name,
+                    Price = stock.Price ?? 0,
+                    StockExchange = new StockExchange()
+                    {
+                        Name = stock.Exchange ?? "",
+                        ShortName = stock.ExchangeShortName ?? "",
+                    }
+                });
             }
             
             stockMarketContext.Stocks.AddRange(newStocks);

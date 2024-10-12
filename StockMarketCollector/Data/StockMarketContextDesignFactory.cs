@@ -8,9 +8,10 @@ public class StockMarketContextDesignFactory : IDesignTimeDbContextFactory<Stock
 {
     public StockMarketContext CreateDbContext(string[] args)
     {
-        IConfigurationRoot configuration = new ConfigurationBuilder()
+        var configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json")
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .AddUserSecrets<Program>()
             .Build();
 
         var connectionString = configuration.GetConnectionString("DefaultConnection");

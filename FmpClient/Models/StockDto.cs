@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace FinancialModelingPrepClient.Models;
+namespace FmpClient.Models;
 
 public class StockDto
 {

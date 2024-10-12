@@ -1,6 +1,6 @@
-using FinancialModelingPrepClient.Models;
+using FmpClient.Models;
 
-namespace FinancialModelingPrepClient.IServices;
+namespace FmpClient.IServices;
 
 public interface IStockService
 {

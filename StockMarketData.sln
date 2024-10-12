@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockMarketCollector", "StockMarketCollector\StockMarketCollector.csproj", "{5F0FBA1F-6FE8-4BA3-9713-F3802FA0F321}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialModelingPrepClient", "FinancialModelingPrepClient\FinancialModelingPrepClient.csproj", "{F7FE70AD-41E5-4BA8-AD5B-35D7E745F950}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FmpClient", "FmpClient\FmpClient.csproj", "{F7FE70AD-41E5-4BA8-AD5B-35D7E745F950}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

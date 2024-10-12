@@ -1,4 +1,4 @@
-namespace FinancialModelingPrepClient.IServices;
+namespace FmpClient.IServices;
 
 public interface IFmpClient
 {

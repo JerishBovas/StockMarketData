@@ -1,14 +1,14 @@
-﻿using FinancialModelingPrepClient.IServices;
-using FinancialModelingPrepClient.Services;
+﻿using FmpClient.IServices;
+using FmpClient.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using RestSharp;
 
-namespace FinancialModelingPrepClient;
+namespace FmpClient;
 
 public static class Setup
 {
-    public static void AddFinancialModelingPrepClient(this IServiceCollection services, string apiKey, string baseUrl)
+    public static void AddFmpClient(this IServiceCollection services, string apiKey, string baseUrl)
     {
         services.AddLogging();
 
